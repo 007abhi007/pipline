@@ -1,0 +1,20 @@
+name: Deploy my simple website to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # This pipeline will run whenever you push new code to the 'main' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Step 1: Get my code from GitHub
+      uses: actions/checkout@v2
+
+    - name: Step 2: Push my code to the live website
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
